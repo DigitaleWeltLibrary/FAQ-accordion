@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: hsl(275, 100%, 97%);
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  position: relative;
+  overflow-x: hidden;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    height: 20dvh;
+    z-index: -10;
+    transition: all 0.5s;
+    background-image: url("../assets/images/background-pattern-desktop.svg");
+
+    @media (width < 600px) {
+      background-image: url("../assets/images/background-pattern-mobile.svg");
+    }
+  }
+
+  main {
+    padding: 1rem;
+    background: hsl(0, 0%, 100%);
+    margin: 1rem;
+    max-width: 600px;
+    border-radius: 0.5rem;
+    div {
+      display: flex;
+      flex-direction: row;
+      h1 {
+        margin: 1.5rem 0 1rem;
+        color: hsl(292, 42%, 14%);
+      }
+    }
+    article {
+      margin-top: 1rem;
+
+      details {
+        color: hsl(292, 16%, 49%);
+        text-align: justify;
+        &:not(:last-child) {
+          border-bottom: 1px rgba(128, 128, 128, 0.213) solid;
+          padding-bottom: 5px;
+        }
+
+        &::marker {
+          display: none;
+        }
+        summary {
+          color: hsl(292, 42%, 14%);
+          padding-block: 0.5rem;
+          text-align: left;
+          font-weight: bold;
+          margin-right: 2rem;
+          position: relative;
+          list-style: none;
+          padding-top: 5px;
+          &::after {
+            content: "";
+            height: 20px;
+            aspect-ratio: 1/1;
+            background: url("../assets/images/icon-plus.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 20px;
+            position: absolute;
+            right: -1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.5s;
+          }
+        }
+        &[open] summary::after {
+          background: url("../assets/images/icon-minus.svg");
+          background-size: 20px;
+        }
+      }
+    }
+  }
+}
+.my-footer-my-data {
+  background: #ffd5af;
+  border-top: 3px solid #712e1e;
+  padding: 1rem;
+  color: #712e1e;
+  p {
+    text-align: center;
+    font-size: 1.5rem;
+    text-wrap: balance;
+    a {
+      text-decoration: none;
+      color: #712e1e;
+      font-weight: bolder;
+      transition: 500ms ease-in-out all;
+      &:hover {
+        color: #000;
+      }
+    }
+  }
+}
